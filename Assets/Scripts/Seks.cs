@@ -6,7 +6,7 @@ public class Seks : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		rand
+		
 	}
 	
 	// Update is called once per frame
