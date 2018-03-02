@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Creature_Manager : MonoBehaviour {
 	
+	private DNA MyDNA;
+
 	public Material[] GenderMat;
 	 
 	private int amountOfHealth;
@@ -21,13 +23,13 @@ public class Creature_Manager : MonoBehaviour {
 	private float border;
 
 	//oop var
-	private int isMale;
-	private int type;
+	[SerializeField]private int isMale;
+	[SerializeField]private int type;
 
-	private float hunger;
-	private float speed;
-	private float strength;
-	private float health;
+	[SerializeField]private float hunger;
+	[SerializeField]private float speed;
+	[SerializeField]private float strength;
+	[SerializeField]private float health;
 	
 
 // Use this for initialization
@@ -37,6 +39,8 @@ public class Creature_Manager : MonoBehaviour {
 		speed = 5f;
 		hunger = 10f;
 		border = GameObject.Find("World").GetComponent<World_Maneger>().ReturnBorder();
+		MyDNA = new DNA(type);
+		OOPVar();
 	}
 	
 // Update is called once per frame
@@ -85,7 +89,6 @@ public class Creature_Manager : MonoBehaviour {
 //restores hunger
 	void Eating() 
 	{
-		Debug.Log("Test");
 		for (int i = 0; i <= 10; i++)
         {
             hunger++;
@@ -132,6 +135,16 @@ public class Creature_Manager : MonoBehaviour {
 				TempFoodSource = col.gameObject.transform;
 			}
 		}
+	}
+
+	void OOPVar()
+	{
+		isMale = MyDNA.isMale;
+		type = MyDNA.type;
+		hunger = MyDNA.hunger;
+		speed = MyDNA.speed;
+		strength = MyDNA.strength;
+		health = MyDNA.health;
 	}
 
 }
