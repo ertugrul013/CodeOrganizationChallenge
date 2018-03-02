@@ -2,28 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour {
+public class Creature_Manager : MonoBehaviour {
 
-	public float speed;
+	private int amountOfHealth;
+	private float Strenght;
+	private float speed;
+	public float hunger;
+	private float foodDecrease;
 
 	public Vector3 target;
 
 	public Transform food;
-
-	public float hunger;
-
-	private float foodDecrease;
-
 	public float distance;
 	
 
 	// Use this for initialization
 	void Start () 
 	{
-		hunger = 10f;
-		foodDecrease = 0.4f;
-
-		target = new Vector3(Random.Range(23f, -23f), transform.position.y, Random.Range(23f, -23f));
+		foodDecrease = 0.1f;
+		speed = 5f;		
 	}
 	
 	// Update is called once per frame
@@ -49,8 +46,22 @@ public class Movement : MonoBehaviour {
 			target = food.transform.position;
 			if(transform.position == target)
 			{
-				Start();	
+				Eating();	
 			}
 		}
+	}
+
+	void Eating()
+	{
+		for (int i = 0; i <= 10; i++)
+        {
+            hunger++;
+        }
+		PosUpdate();
+	}
+
+	void PosUpdate()
+	{
+		target = new Vector3(Random.Range(23f, -23f), transform.position.y, Random.Range(23f, -23f));
 	}
 }
