@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Creature_Manager : MonoBehaviour {
-
+	
+	public Material[] GenderMat;
+	 
 	private int amountOfHealth;
 	private float strenght;
 	private float speed;
@@ -12,10 +14,11 @@ public class Creature_Manager : MonoBehaviour {
 
 	public Vector3 target;
 
-	public Transform creature;
 	public Transform leavesPrefab;
 	public Transform carcassPrefab;
 	public float distance;
+
+	private float border;
 	
 
 // Use this for initialization
@@ -24,6 +27,7 @@ public class Creature_Manager : MonoBehaviour {
 		foodDecrease = 0.1f;
 		speed = 5f;
 		hunger = 10f;
+		border = GameObject.Find("World").GetComponent<World_Maneger>().ReturnBorder();
 	}
 	
 // Update is called once per frame
@@ -63,7 +67,8 @@ public class Creature_Manager : MonoBehaviour {
 			{
 				Eating();	
 			}
-		} */
+		} 
+		*/
 	}
 
 //restores hunger
@@ -79,7 +84,7 @@ public class Creature_Manager : MonoBehaviour {
 //sets new target after position has been reached or if hunger has been restored
 	void TarUpdate() 
 	{
-		target = new Vector3(Random.Range(23f, -23f), transform.position.y, Random.Range(23f, -23f));
+		target = new Vector3(Random.Range(border, -border), 0.8f, Random.Range(border, -border));
 	}
 
 //spawns meat carcass at position when creature dies

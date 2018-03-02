@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114788548646785110}
   - component: {fileID: 135222023877539998}
   m_Layer: 0
-  m_Name: Creature2
+  m_Name: Carcass
   m_TagString: Creature1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hunger: 0
   target: {x: 0, y: 0, z: 0}
-  creature: {fileID: 0}
   leavesPrefab: {fileID: 0}
   carcassPrefab: {fileID: 0}
   distance: 0
