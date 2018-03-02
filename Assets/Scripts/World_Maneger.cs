@@ -29,7 +29,7 @@ public class World_Maneger : MonoBehaviour {
 
 	}
 
-	float ReturnBorder()
+	public float ReturnBorder()
 	{
 		for (int i = 5; i < 16; i++)
 		{

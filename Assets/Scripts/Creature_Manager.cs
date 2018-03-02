@@ -14,6 +14,8 @@ public class Creature_Manager : MonoBehaviour {
 
 	public Transform food;
 	public float distance;
+
+	private float Border;
 	
 
 	// Use this for initialization
@@ -21,6 +23,7 @@ public class Creature_Manager : MonoBehaviour {
 	{
 		foodDecrease = 0.1f;
 		speed = 5f;		
+		Border = GameObject.Find("World").GetComponent<World_Maneger>().ReturnBorder();
 	}
 	
 	// Update is called once per frame
@@ -38,7 +41,7 @@ public class Creature_Manager : MonoBehaviour {
 
 		if (transform.position == target)
 		{
-			target = new Vector3(Random.Range(23f, -23f), transform.position.y, Random.Range(23f, -23f));
+			target = new Vector3(Random.Range(Border, -Border), transform.position.y, Random.Range(Border, -Border));
 		}
 
 		if (distance < 10f && hunger <= 1f)
@@ -62,6 +65,6 @@ public class Creature_Manager : MonoBehaviour {
 
 	void PosUpdate()
 	{
-		target = new Vector3(Random.Range(23f, -23f), transform.position.y, Random.Range(23f, -23f));
+		target = new Vector3(Random.Range(Border, -Border), transform.position.y, Random.Range(Border, Border));
 	}
 }
