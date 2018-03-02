@@ -1,4 +1,4 @@
-#the team
+### the team
 sooooooooooo yeah this was an attempt to make the game Evolution in 1 day basicly
 * so the main point is that we learned quit alot during this time
 * our team was me (ertugrul(eddie)) and jesper
