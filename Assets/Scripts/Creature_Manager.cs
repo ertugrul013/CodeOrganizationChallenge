@@ -8,8 +8,6 @@ public class Creature_Manager : MonoBehaviour {
 	 
 	private int amountOfHealth;
 	private float strenght;
-	private float speed;
-	public float hunger;
 	private float foodDecrease;
 
 	public Vector3 target;
@@ -21,6 +19,15 @@ public class Creature_Manager : MonoBehaviour {
 	public float distance;
 
 	private float border;
+
+	//oop var
+	private int isMale;
+	private int type;
+
+	private float hunger;
+	private float speed;
+	private float strength;
+	private float health;
 	
 
 // Use this for initialization
