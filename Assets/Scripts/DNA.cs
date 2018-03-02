@@ -13,14 +13,12 @@ public class DNA
 	public float strength;
 	public float health;
 
-	public DNA()//decides the gender and type of the object
-	{
-		isMale = Random.Range(0,2);
-		type = Random.Range(0,2);
-	}
+
 
 	public DNA(int type)
 	{
+		isMale = Random.Range(0,2);
+		type = Random.Range(0,2);
 		this.type = type;
 
 		switch (type)
