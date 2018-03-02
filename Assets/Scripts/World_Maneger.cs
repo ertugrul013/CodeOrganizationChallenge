@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class World_Maneger : MonoBehaviour {
 	private Transform World_Scale;
-	[Range(2,15)] public int WorldSize;
+	[Range(5,15)] public int WorldSize;
 
 	private GameObject Food;
 	private GameObject Obstacle;
@@ -23,6 +23,18 @@ public class World_Maneger : MonoBehaviour {
 
 	void FoodSpawn()
 	{
-		
+
+	}
+
+	float ReturnBorder()
+	{
+		for (int i = 5; i < 15; i++)
+		{
+			if (i == WorldSize)
+			{
+				return(i * 5);
+			}
+		}
+		return(0);
 	}
 }
