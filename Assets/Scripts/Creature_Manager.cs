@@ -48,10 +48,12 @@ public class Creature_Manager : MonoBehaviour {
 		transform.position = Vector3.MoveTowards(transform.position, target, mSpeed);
 
 //sets new target when position is reached
+
 		if (transform.position == target) 
 		{
 			TarUpdate();
 		}
+	
 
 //checks distance between creature and foodsource then changes target to nearest foodsource based on creatures tpye
 		/*if (type == 1)
@@ -76,6 +78,7 @@ public class Creature_Manager : MonoBehaviour {
 //restores hunger
 	void Eating() 
 	{
+		Debug.Log("Test");
 		for (int i = 0; i <= 10; i++)
         {
             hunger++;
@@ -111,7 +114,7 @@ public class Creature_Manager : MonoBehaviour {
 			if (col.gameObject.tag == "Tree" || col.gameObject.tag == "Bush" || col.gameObject.tag == "Berry")
       		{
      		    target = col.transform.position;
-				TempFoodSource = col.collider.gameObject.transform;
+				TempFoodSource = col.gameObject.transform;
 			}
    		}
 		else if (/*type == 0 &&*/ hunger <= 2f)
@@ -119,14 +122,9 @@ public class Creature_Manager : MonoBehaviour {
 			if (col.gameObject.tag == "Carcass")
 			{
 				target = col.transform.position;
-				TempFoodSource = col.collider.gameObject.transform;
+				TempFoodSource = col.gameObject.transform;
 			}
 		}
-
-		if (transform.position == target)
-			{
-				Eating();	
-			}
 	}
 
 }
