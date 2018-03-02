@@ -14,8 +14,10 @@ public class Creature_Manager : MonoBehaviour {
 
 	public Vector3 target;
 
-	public Transform leavesPrefab;
+	public Transform TempFoodSource;
+
 	public Transform carcassPrefab;
+	
 	public float distance;
 
 	private float border;
@@ -78,6 +80,7 @@ public class Creature_Manager : MonoBehaviour {
         {
             hunger++;
         }
+		DestroyFoodSource();
 		TarUpdate();
 	}
 
@@ -94,5 +97,36 @@ public class Creature_Manager : MonoBehaviour {
 		Destroy(gameObject);
 	}
 
+//Destroys foodsource after its been eaten
+	void DestroyFoodSource()
+	{
+		Destroy(TempFoodSource);
+	}
+
+//Detects collision for when its hungry 
+	void OnCollisionEnter (Collision col)
+    {
+     	if (/*type == 1 &&*/ hunger <= 2f)
+		{
+			if (col.gameObject.tag == "Tree" || col.gameObject.tag == "Bush" || col.gameObject.tag == "Berry")
+      		{
+     		    target = col.transform.position;
+				TempFoodSource = col.collider.gameObject.transform;
+			}
+   		}
+		else if (/*type == 0 &&*/ hunger <= 2f)
+		{
+			if (col.gameObject.tag == "Carcass")
+			{
+				target = col.transform.position;
+				TempFoodSource = col.collider.gameObject.transform;
+			}
+		}
+
+		if (transform.position == target)
+			{
+				Eating();	
+			}
+	}
 
 }
