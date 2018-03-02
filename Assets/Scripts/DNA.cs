@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿/*
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,7 +33,7 @@ public class DNA {
 		else
 		{
 			Debug.Log("gender couldnt be decided");
-			return null;
+			return false;
 		}
 	}
 #endregion
@@ -53,7 +54,7 @@ public class DNA {
 		else
 		{
 			Debug.Log("no type could be assigend");
-			return null;
+			return false;
 		}
 	}
 #endregion
@@ -71,3 +72,4 @@ public class DNA {
  
 
 }
+*/
