@@ -116,7 +116,7 @@ public class Creature_Manager : MonoBehaviour {
 //Detects collision for when its hungry 
 	void OnCollisionEnter (Collision col)
     {
-     	if (/*type == 1 &&*/ hunger <= 2f)
+     	if (type == 0 && hunger <= 2f)
 		{
 			if (col.gameObject.tag == "Tree" || col.gameObject.tag == "Bush" || col.gameObject.tag == "Berry")
       		{
@@ -124,7 +124,7 @@ public class Creature_Manager : MonoBehaviour {
 				TempFoodSource = col.gameObject.transform;
 			}
    		}
-		else if (/*type == 0 &&*/ hunger <= 2f)
+		else if (type == 1 && hunger <= 2f)
 		{
 			if (col.gameObject.tag == "Carcass")
 			{
