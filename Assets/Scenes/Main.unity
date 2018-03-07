@@ -146,11 +146,17 @@ MonoBehaviour:
   GenderMat:
   - {fileID: 2100000, guid: ae9909c54cefe82418f1851672075224, type: 2}
   - {fileID: 2100000, guid: df5fad20fedfdcb47aed5c1331d52d10, type: 2}
-  hunger: 0
   target: {x: 0, y: 0, z: 0}
-  leavesPrefab: {fileID: 0}
+  TempFoodSource: {fileID: 0}
   carcassPrefab: {fileID: 0}
+  LeavesPrefab: {fileID: 0}
   distance: 0
+  isMale: 0
+  type: 0
+  hunger: 0
+  speed: 0
+  strength: 0
+  health: 0
 --- !u!23 &109061256
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -215,7 +221,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &771827442
 GameObject:
@@ -291,8 +297,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 771827442}
-  m_LocalRotation: {x: 0.40308785, y: -0, z: -0, w: 0.9151613}
-  m_LocalPosition: {x: 0, y: 26.6, z: -30.43}
+  m_LocalRotation: {x: -0.04721439, y: 0.9010378, z: -0.4190405, w: -0.10152247}
+  m_LocalPosition: {x: 20.372763, y: 88.40442, z: 88.69739}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -397,10 +403,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldSize: 14
-  Food: {fileID: 0}
-  FoodScale: 5
+  meat: {fileID: 1115378839462946, guid: 1cfbae74a5051c441a7d2bc6a49377f5, type: 2}
+  leaves: {fileID: 1735194489743922, guid: 8508704ca3e60b94fb7c7258abe232ba, type: 2}
+  foodScale: 5
   Obstacle: {fileID: 1776024937786332, guid: d41ba282e314cd646b61d71a05cc8e32, type: 2}
-  ObsctaleScale: 0
+  ObsctaleScale: 5
 --- !u!1 &1162151906
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,31 +473,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &2140001429
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2140001430}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2140001430
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2140001429}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.32, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

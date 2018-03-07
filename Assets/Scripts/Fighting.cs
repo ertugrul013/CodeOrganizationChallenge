@@ -18,7 +18,7 @@ public class Fighting : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter(Collision Col)
+	void OnCollisionEnter(Collision col)
 	{
 		if (col.gameObject.tag == "OtherCreature")
 		{

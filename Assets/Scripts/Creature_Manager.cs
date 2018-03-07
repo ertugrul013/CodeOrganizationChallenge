@@ -65,6 +65,7 @@ public class Creature_Manager : MonoBehaviour {
 			TarUpdate();
 		}
 	
+#region WIP Food manegmend
 
 //checks distance between creature and foodsource then changes target to nearest foodsource based on creatures tpye
 		/*if (type == 1)
@@ -85,7 +86,7 @@ public class Creature_Manager : MonoBehaviour {
 		} 
 		*/
 	}
-
+#endregion
 //restores hunger
 	void Eating() 
 	{
@@ -145,6 +146,15 @@ public class Creature_Manager : MonoBehaviour {
 		speed = MyDNA.speed;
 		strength = MyDNA.strength;
 		health = MyDNA.health;
+
+		if (isMale == 0)
+		{
+			GetComponent<MeshRenderer>().material = GenderMat[0];
+		}
+		else
+		{
+			GetComponent<MeshRenderer>().material = GenderMat[1];
+		}
 	}
 
 }

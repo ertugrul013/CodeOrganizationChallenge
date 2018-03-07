@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class World_Maneger : MonoBehaviour {
+	[Header("World Settings")]
 	private Transform World_Scale;
 	[Range(5,15)] public int WorldSize;
 
+	[Space][Header("Creatur Settings")]
+	[SerializeField] private GameObject Creatur;
+	[Tooltip("this should be an even number")][SerializeField] private int AmountOfCreaturs;
+
 	[Space]
+	[Header("Object Var")]
 	public GameObject Food;
 	[SerializeField][Range(5,10)] private float FoodScale;
 
@@ -23,6 +29,7 @@ public class World_Maneger : MonoBehaviour {
 		World_Scale.localScale = new Vector3 (WorldSize, WorldSize, WorldSize);	
 
 		ObjectSpawn();
+		InitSpawn();
 	}
 	
 	// Update is called once per frame
@@ -39,7 +46,7 @@ public class World_Maneger : MonoBehaviour {
 		}
 		for (int i = 0; i < 6 * ObsctaleScale; i++) 
 		{
-			Instantiate (Food,new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);	
+//			Instantiate (Food,new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);	
 		}
 	}
 
@@ -54,5 +61,21 @@ public class World_Maneger : MonoBehaviour {
 			}
 		}
 			return (1f);		
+	}
+
+	void InitSpawn()
+	{
+		int temp = AmountOfCreaturs % 2;
+		Debug.Log(temp);
+		if(temp == 0){
+			for (int x = 0; x < AmountOfCreaturs; x++)
+			{
+				Vector3 posx = new Vector3 (0, x,0.5f);
+				Instantiate(Creatur,posx , Quaternion.identity);
+			}	
+		}
+		else
+			Debug.LogError("Not an even number");
+			return;
 	}
 }
