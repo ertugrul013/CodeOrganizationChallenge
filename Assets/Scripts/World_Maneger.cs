@@ -27,9 +27,12 @@ public class World_Maneger : MonoBehaviour {
 	{
 		World_Scale = this.gameObject.transform;
 		World_Scale.localScale = new Vector3 (WorldSize, WorldSize, WorldSize);	
+		borderpos = ReturnBorder();
 
 		ObjectSpawn();
 		InitSpawn();
+
+
 	}
 	
 	// Update is called once per frame
@@ -40,14 +43,15 @@ public class World_Maneger : MonoBehaviour {
 
 	void ObjectSpawn()
 	{
-		for (int i = 0; i < 6 * FoodScale; i++)
+		for (int i = 0; i < 5 * ObsctaleScale; i++)
 		{	
 			Instantiate (Obstacle,new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);
 		}
-		for (int i = 0; i < 6 * ObsctaleScale; i++) 
+		for (int i = 0; i < 5 * FoodScale; i++)
 		{
-//			Instantiate (Food,new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);	
+			Instantiate (Food,new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);
 		}
+	
 	}
 
 	public float ReturnBorder()
@@ -66,7 +70,6 @@ public class World_Maneger : MonoBehaviour {
 	void InitSpawn()
 	{
 		int temp = AmountOfCreaturs % 2;
-		Debug.Log(temp);
 		if(temp == 0){
 			for (int x = 0; x < AmountOfCreaturs; x++)
 			{
