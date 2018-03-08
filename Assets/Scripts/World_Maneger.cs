@@ -5,21 +5,20 @@ using UnityEngine;
 public class World_Maneger : MonoBehaviour {
 	[Header("World Settings")]
 	private Transform World_Scale;
-	[Range(5,15)] public int WorldSize;
+	[Range(5,50)] public int WorldSize;
 
 	[Space][Header("Creatur Settings")]
 	[SerializeField] private GameObject Creatur;
 	[Tooltip("this should be an even number")][SerializeField] private int AmountOfCreaturs;
 
 	[Space]
-	[Header("Object Var")]
+	[Header("Spawnable Objects")]
 	public GameObject Food;
-	[SerializeField][Range(5,10)] private float FoodScale;
+	[SerializeField][Range(5,40)] private int FoodScale;
 
 	[Space]
-	public GameObject Obstacle;
-	[SerializeField][Range(5,10)] private float ObsctaleScale;
-	
+	public GameObject Plants;
+	[SerializeField][Range(5,20)] private int PlantsScale;
 
 	private float borderpos;
 	// Use this for initialization
@@ -43,9 +42,9 @@ public class World_Maneger : MonoBehaviour {
 
 	void ObjectSpawn()
 	{
-		for (int i = 0; i < 5 * ObsctaleScale; i++)
+		for (int i = 0; i < 5 * PlantsScale; i++)
 		{	
-			Instantiate (Obstacle,new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);
+			Instantiate (Plants,new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);
 		}
 		for (int i = 0; i < 5 * FoodScale; i++)
 		{
@@ -54,14 +53,25 @@ public class World_Maneger : MonoBehaviour {
 	
 	}
 
+	//will calculate the world borders but only if the world object is a plane
 	public float ReturnBorder()
 	{
-		for (int i = 5; i < 16; i++)
+		for (int i = 5; i < WorldSize ; i++)
 		{
 			if (i == WorldSize)
 			{				
 				borderpos = i * 5;
 				return( i * 5);
+			}
+			//if you maxed the slider it will fallback to adding 1 to i and trying it again
+			else
+			{
+				i++;
+				if (i == WorldSize)
+				{
+					borderpos = i * 5;
+					return(i * 5);
+				}
 			}
 		}
 			return (1f);		

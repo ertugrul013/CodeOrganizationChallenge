@@ -292,13 +292,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea3add5fd1d05a448ca1cf70f87ec0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldSize: 15
+  WorldSize: 50
   Creatur: {fileID: 1433738859313246, guid: 3b87a4f5b75203b498013d540bfaf21c, type: 2}
-  AmountOfCreaturs: 12
+  AmountOfCreaturs: 5000
   Food: {fileID: 0}
   FoodScale: 0
-  Obstacle: {fileID: 1776024937786332, guid: d41ba282e314cd646b61d71a05cc8e32, type: 2}
-  ObsctaleScale: 10
+  Plants: {fileID: 1776024937786332, guid: d41ba282e314cd646b61d71a05cc8e32, type: 2}
+  PlantsScale: 16
 --- !u!1 &1162151906
 GameObject:
   m_ObjectHideFlags: 0
