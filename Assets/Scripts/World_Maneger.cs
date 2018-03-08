@@ -9,7 +9,7 @@ public class World_Maneger : MonoBehaviour {
 
 	[Space][Header("Creatur Settings")]
 	[SerializeField] private GameObject Creatur;
-	[Tooltip("this should be an even number")][SerializeField] private int AmountOfCreaturs;
+	[Tooltip("this should be an even number")][Range(20,80)][SerializeField] private int AmountOfCreaturs;
 
 	[Space]
 	[Header("Spawnable Objects")]
@@ -77,8 +77,20 @@ public class World_Maneger : MonoBehaviour {
 			return (1f);		
 	}
 
+	//this function spawns the creatures in a vertical way brings them down and after comming down the creaturs will move to a random lacation
 	void InitSpawn()
 	{
+		for (int x = 0; x < AmountOfCreaturs; x++)
+			{
+				Vector3 posx = new Vector3 (0, x,0.5f);
+				Instantiate(Creatur,posx , Quaternion.identity);
+			}	
+	}
+}
+
+//this code will eventualy be used for spawning in block forms in the center of game 
+/*
+
 		int temp = AmountOfCreaturs % 2;
 		if(temp == 0){
 			for (int x = 0; x < AmountOfCreaturs; x++)
@@ -90,5 +102,4 @@ public class World_Maneger : MonoBehaviour {
 		else
 			Debug.LogError("Not an even number");
 			return;
-	}
-}
+*/

@@ -294,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldSize: 50
   Creatur: {fileID: 1433738859313246, guid: 3b87a4f5b75203b498013d540bfaf21c, type: 2}
-  AmountOfCreaturs: 5000
+  AmountOfCreaturs: 20
   Food: {fileID: 0}
   FoodScale: 0
   Plants: {fileID: 1776024937786332, guid: d41ba282e314cd646b61d71a05cc8e32, type: 2}

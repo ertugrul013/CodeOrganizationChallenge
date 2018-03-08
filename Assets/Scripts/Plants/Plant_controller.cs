@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Life_Controller : MonoBehaviour {
-
-	
+public class Plant_controller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
