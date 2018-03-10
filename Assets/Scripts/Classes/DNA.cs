@@ -14,27 +14,34 @@ public class DNA
 	public float health;
 
 
-
+//random ranges still need to be adjusted for the different types
 	public DNA(int type)
 	{
-		isMale = Random.Range(0,2);
-		type = Random.Range(0,2);
+		isMale = Random.Range(0, 2);
+		type = Random.Range(0, 3);
 		this.type = type;
 
 		switch (type)
 		{
 			case 0: //the vegan type
-				hunger = Random.Range(60,100);
-				speed = Random.Range(5,10);
-				strength = Random.Range(40,60);
-				health = Random.Range(80,100);
+				hunger = Random.Range(60, 100);
+				speed = Random.Range(5, 10);
+				strength = Random.Range(40, 60);
+				health = Random.Range(80, 100);
 			break;
 			
 			case 1:
-				hunger = Random.Range(65,100);
-				speed = Random.Range(8,10);
-				strength = Random.Range(45,60);
-				health = Random.Range(70,100);
+				hunger = Random.Range(65, 100);
+				speed = Random.Range(8, 10);
+				strength = Random.Range(45, 60);
+				health = Random.Range(70, 100);
+			break;
+
+			case 2:
+				hunger = Random.Range(70, 90);
+				speed = Random.Range(5, 8);
+				strength = Random.Range(20, 60);
+				health = Random.Range(90, 100);
 			break;
 			
 			default:

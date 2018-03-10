@@ -9,7 +9,7 @@ public class World_Maneger : MonoBehaviour {
 
 	[Space][Header("Creatur Settings")]
 	[SerializeField] private GameObject Creatur;
-	[Tooltip("this should be an even number")][Range(20,80)][SerializeField] private int AmountOfCreaturs;
+	[Tooltip("how big would should the simulation area be")][Range(20,80)][SerializeField] private int AmountOfCreaturs;
 
 	[Space]
 	[Header("Spawnable Objects")]
@@ -56,25 +56,7 @@ public class World_Maneger : MonoBehaviour {
 	//will calculate the world borders but only if the world object is a plane
 	public float ReturnBorder()
 	{
-		for (int i = 5; i < WorldSize ; i++)
-		{
-			if (i == WorldSize)
-			{				
-				borderpos = i * 5;
-				return( i * 5);
-			}
-			//if you maxed the slider it will fallback to adding 1 to i and trying it again
-			else
-			{
-				i++;
-				if (i == WorldSize)
-				{
-					borderpos = i * 5;
-					return(i * 5);
-				}
-			}
-		}
-			return (1f);		
+		return(WorldSize * 5);		
 	}
 
 	//this function spawns the creatures in a vertical way brings them down and after comming down the creaturs will move to a random lacation

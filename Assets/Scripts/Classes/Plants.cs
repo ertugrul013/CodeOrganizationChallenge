@@ -6,6 +6,8 @@ using UnityEngine;
 public class Plants{
 
 	public float GrowthSpeed;
+	public float LifeSpan;
+	public float AgeMultiplier;
 	public string[] type = new string [] {"Bush" , "Tree" , "Berry", "Boulder"};
 	public string myType;
 
