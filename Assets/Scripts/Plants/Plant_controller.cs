@@ -9,15 +9,16 @@ public class Plant_controller : MonoBehaviour {
 	public GameObject[] Stages = new GameObject[5];
 
 	//OOP Var will be handeld automaticly
-	private float growthSpeed;
+	public int type;
+	public float growthSpeed;
 	public float age;
-	private float LifeSpan;
-	private float ageMultiplier;
+	public float LifeSpan;
 	private Plants myPlants;
 
 	// Use this for initialization
 	void Start () {
-		ageMultiplier = 2;
+		myPlants = new Plants();
+		GetOOP();
 	}
 	
 	// Update is called once per frame
@@ -28,6 +29,18 @@ public class Plant_controller : MonoBehaviour {
 	//the max age for now is 100 this will later be adjusted depend on the type and how old the object can get
 	void Growing()
 	{
-		age = age + Time.deltaTime * ageMultiplier;		
+		age = age + Time.deltaTime / LifeSpan;		
+	}
+
+	void GetOOP()
+	{
+		type = myPlants.type;
+		growthSpeed = myPlants.GrowthSpeed;		
+		LifeSpan = myPlants.LifeSpan;
+	}
+
+	void TypeController()
+	{
+
 	}
 }

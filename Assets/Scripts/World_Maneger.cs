@@ -18,7 +18,11 @@ public class World_Maneger : MonoBehaviour {
 
 	[Space]
 	public GameObject Plants;
-	[SerializeField][Range(5,20)] private int PlantsScale;
+	[SerializeField][Range(20,50)] private int PlantsScale;
+
+	[Space]
+	public GameObject Tree;
+	[SerializeField][Range(15,50)] private int TreeDensity;
 
 	private float borderpos;
 	// Use this for initialization
@@ -30,8 +34,6 @@ public class World_Maneger : MonoBehaviour {
 
 		ObjectSpawn();
 		InitSpawn();
-
-
 	}
 	
 	// Update is called once per frame
@@ -42,13 +44,17 @@ public class World_Maneger : MonoBehaviour {
 
 	void ObjectSpawn()
 	{
-		for (int i = 0; i < 5 * PlantsScale; i++)
+		for (int i = 0; i < 5 * TreeDensity; i++) //tree spawning
 		{	
-			Instantiate (Plants,new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);
+			Instantiate (Tree, new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);
+		}
+		for (int i = 0; i < 5 * PlantsScale; i++)
+		{
+			Instantiate (Plants, new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);
 		}
 		for (int i = 0; i < 5 * FoodScale; i++)
 		{
-			Instantiate (Food,new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);
+			Instantiate (Food, new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);
 		}
 	
 	}

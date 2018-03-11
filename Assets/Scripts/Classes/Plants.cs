@@ -5,38 +5,36 @@ using UnityEngine;
 
 public class Plants{
 
+	public int type;
+
 	public float GrowthSpeed;
 	public float LifeSpan;
-	public float AgeMultiplier;
-	public string[] type = new string [] {"Bush" , "Tree" , "Berry", "Boulder"};
-	public string myType;
-
+	
 	public Plants()
 	{
-		myType = type[Random.Range(0,type.Length)].ToString();
+		type = Random.Range(0,3);
 
-		//bush
-		if (myType == type[0])
+		switch (type)
 		{
-			GrowthSpeed = Random.Range(3,5);	
+			case 0://normal tree
+				GrowthSpeed = Random.Range(6,10);
+				LifeSpan = Random.Range(2,5);
+			break;
+
+			case 1://tree 2
+				GrowthSpeed = Random.Range(2,5);
+				LifeSpan = Random.Range(8,10);
+			break;
+
+			case 2://tree 3
+				GrowthSpeed = Random.Range(3,7);
+				LifeSpan = Random.Range(3,7);
+			break;
+
+			default:
+				Debug.Log("MOM GET THE CAMERA I FACKED UP");
+			break;
 		}
-		//tree
-		else if (myType == type[1])
-		{
-			GrowthSpeed = Random.Range(0,3);
-		}
-		//Berry
-		else if (myType == type[2])
-		{
-			GrowthSpeed = Random.Range(1,4);
-		}
-		//boulder
-		else if (myType == type[3])
-		{
-			GrowthSpeed = Random.Range(0,0);
-		}
-		else
-			Debug.LogWarning("I dont know how but you facked up");
 	}		
-	}
+}
 
