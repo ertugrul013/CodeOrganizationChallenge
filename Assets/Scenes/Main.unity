@@ -292,7 +292,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &930593423
 MonoBehaviour:
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldSize: 50
   Creatur: {fileID: 1433738859313246, guid: 3b87a4f5b75203b498013d540bfaf21c, type: 2}
-  AmountOfCreaturs: 20
+  AmountOfCreaturs: 59
   Food: {fileID: 1986620866435638, guid: 8b57e746daacc304a9adee501fa076cf, type: 2}
   FoodScale: 14
   Plants: {fileID: 1592254425243204, guid: 7fed86861fac52740b92da4e16749750, type: 2}
@@ -377,5 +377,51 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &1715149525
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4348999863124888, guid: 8b57e746daacc304a9adee501fa076cf, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 44.293015
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348999863124888, guid: 8b57e746daacc304a9adee501fa076cf, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.992481
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348999863124888, guid: 8b57e746daacc304a9adee501fa076cf, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -13.112812
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348999863124888, guid: 8b57e746daacc304a9adee501fa076cf, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348999863124888, guid: 8b57e746daacc304a9adee501fa076cf, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348999863124888, guid: 8b57e746daacc304a9adee501fa076cf, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348999863124888, guid: 8b57e746daacc304a9adee501fa076cf, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348999863124888, guid: 8b57e746daacc304a9adee501fa076cf, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699206509467976, guid: 8b57e746daacc304a9adee501fa076cf, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 8b57e746daacc304a9adee501fa076cf, type: 2}
+  m_IsPrefabParent: 0
