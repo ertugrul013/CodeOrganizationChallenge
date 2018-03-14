@@ -20,10 +20,6 @@ public class World_Maneger : MonoBehaviour {
 	public GameObject Plants;
 	[SerializeField][Range(20,50)] private int PlantsScale;
 
-	[Space]
-	public GameObject Tree;
-	[SerializeField][Range(15,50)] private int TreeDensity;
-
 	private float borderpos;
 	// Use this for initialization
 	void Start ()
@@ -44,10 +40,6 @@ public class World_Maneger : MonoBehaviour {
 
 	void ObjectSpawn()
 	{
-		for (int i = 0; i < 5 * TreeDensity; i++) //tree spawning
-		{	
-			Instantiate (Tree, new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);
-		}
 		for (int i = 0; i < 5 * PlantsScale; i++)
 		{
 			Instantiate (Plants, new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);

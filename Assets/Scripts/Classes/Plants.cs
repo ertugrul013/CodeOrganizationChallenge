@@ -21,12 +21,12 @@ public class Plants{
 				LifeSpan = Random.Range(2,5);
 			break;
 
-			case 1://tree 2
+			case 1://bush
 				GrowthSpeed = Random.Range(2,5);
 				LifeSpan = Random.Range(8,10);
 			break;
 
-			case 2://tree 3
+			case 2://een rots
 				GrowthSpeed = Random.Range(3,7);
 				LifeSpan = Random.Range(3,7);
 			break;
