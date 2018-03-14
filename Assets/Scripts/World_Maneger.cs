@@ -38,6 +38,8 @@ public class World_Maneger : MonoBehaviour {
 		
 	}
 
+	//he will spawn all the objects that are not a creature
+	//for example foor trees rocks
 	void ObjectSpawn()
 	{
 		for (int i = 0; i < 5 * PlantsScale; i++)
@@ -65,6 +67,12 @@ public class World_Maneger : MonoBehaviour {
 				Vector3 posx = new Vector3 (0, x,0.5f);
 				Instantiate(Creatur,posx , Quaternion.identity);
 			}	
+	}
+
+	//this will only spawn an object once 
+	public void SpawnObject()
+	{
+		Instantiate (Plants, new Vector3(Random.Range(borderpos, -borderpos), 0.5f, Random.Range(borderpos, -borderpos)),Quaternion.identity);
 	}
 }
 

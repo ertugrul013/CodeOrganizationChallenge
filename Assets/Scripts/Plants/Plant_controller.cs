@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//vraag even aan david of het slimmer is om alle variable op het begin op te vragen 
+// of pas wanneer je ze nog gaat hebben
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,8 +24,8 @@ public class Plant_controller : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		myPlants = new Plants();
-		GetOOP();		
-		Debug.Log(type);
+		GetOOP();	
+		DestroyUnused();
 		switch (type)
 		{
 			case 0:
@@ -43,7 +45,7 @@ public class Plant_controller : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		GrowingControl();
 	}
 
@@ -56,8 +58,16 @@ public class Plant_controller : MonoBehaviour {
 			GrowingType1();
 		}
 		else
+		{
 			GrowingType2();
-		
+		}
+
+		if (age > 40)
+		{
+			GameObject.Find("World").GetComponent<World_Maneger>().SpawnObject();
+			Destroy(this.gameObject);
+		}
+			
 	}
 
 	void GetOOP()
@@ -69,35 +79,60 @@ public class Plant_controller : MonoBehaviour {
 
 	void GrowingType1()//tree
 	{
-		if (age <= 10)
+		if(Tree[0] != null)
 		{
-			Tree[0].SetActive(true);
-		}
-		if (age >= 10)
-		{
-			Tree[1].SetActive(true);
-		}
-		if (age >= 15)
-		{
-			Tree[2].SetActive(true);
-		}
-		if (age >= 20)
-		{
-			Tree[3].SetActive(true);
-		}
+			if (age <= 10)
+			{
+				Tree[0].SetActive(true);
+			}
+			if (age >= 10)
+			{
+				Tree[1].SetActive(true);
+			}
+			if (age >= 15)
+			{
+				Tree[2].SetActive(true);
+			}
+			if (age >= 20)
+			{
+				Tree[3].SetActive(true);
+			}
+		}else
+			return;
 	}
 
 	void GrowingType2()//bush berry
 	{
-		if(age <= 5)
+		if(Bush[0] != null)
 		{
-			Bush[0].SetActive(true);
+			if(age <= 5)
+			{
+				Bush[0].SetActive(true);
+			}
+			else
+			{
+				Bush[1].SetActive(true);
+			}
+		}else
+			return;
+	}
+	void DestroyUnused()
+	{
+		if (type == 0)
+		{
+			Destroy(GameObjectTypes[1]);
+			Destroy(GameObjectTypes[2]);
+		}
+		else if (type == 1)
+		{
+			Destroy(GameObjectTypes[0]);
+			Destroy(GameObjectTypes[2]);
 		}
 		else
 		{
-			Bush[1].SetActive(true);
+			Destroy(GameObjectTypes[0]);
+			Destroy(GameObjectTypes[1]);
 		}
-
-	}	
+	}
 
 }

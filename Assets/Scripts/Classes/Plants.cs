@@ -9,6 +9,7 @@ public class Plants{
 
 	public float GrowthSpeed;
 	public float LifeSpan;
+	public bool Eatable;
 	
 	public Plants()
 	{
@@ -19,16 +20,19 @@ public class Plants{
 			case 0://normal tree
 				GrowthSpeed = Random.Range(6,10);
 				LifeSpan = Random.Range(2,5);
+				Eatable = false;
 			break;
 
 			case 1://bush
 				GrowthSpeed = Random.Range(2,5);
 				LifeSpan = Random.Range(8,10);
+				Eatable = true;
 			break;
 
 			case 2://een rots
 				GrowthSpeed = Random.Range(3,7);
 				LifeSpan = Random.Range(3,7);
+				Eatable = false;
 			break;
 
 			default:
