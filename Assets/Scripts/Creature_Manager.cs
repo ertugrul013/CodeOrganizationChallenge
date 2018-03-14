@@ -23,17 +23,20 @@ public class Creature_Manager : MonoBehaviour {
 
 	private float border;
 
-	//oop var
-	[SerializeField]private int isMale;
-	[SerializeField]private int type;
+	private float FovObstacle = 115f;
+	private float FovFood = 160f;
 
-	[SerializeField]private float hunger;
-	[SerializeField]private float speed;
-	[SerializeField]private float strength;
-	[SerializeField]private float health;
+	//oop var
+	private int isMale;
+	private int type;
+
+	public float hunger;
+	private float speed;
+	private float strength;
+	private float health;
 	
 
-// Use this for initialization
+		// Use this for initialization
 	void Start () 
 	{
 		foodDecrease = 0.1f;
@@ -44,10 +47,10 @@ public class Creature_Manager : MonoBehaviour {
 		OOPVar();
 	}
 	
-// Update is called once per frame
+	// Update is called once per frame
 	void Update () 
 	{
-//Decreases hunger and dies if hunger hits 0
+		//Decreases hunger and dies if hunger hits 0
 		hunger -= foodDecrease * Time.deltaTime;
 		
 		if (hunger <= 0f)
@@ -55,96 +58,66 @@ public class Creature_Manager : MonoBehaviour {
 			SpawnCarcass();
 		}
 
+		transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
-		float mSpeed = speed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards(transform.position, target, mSpeed);
-
-//sets new target when position is reached
-
+		//sets new target when position is reached
 		if (transform.position == target) 
 		{
 			TarUpdate();
 		}
-	
-#region WIP Food manegmend
-
-//checks distance between creature and foodsource then changes target to nearest foodsource based on creatures tpye
-		/*if (type == 1)
+	}
+	//restores hunger
+	void FoodFinding() 
+	{		
+		RaycastHit hit;
+		Vector3 direction = target - transform.position;
+		Debug.DrawLine(transform.position,direction, Color.red);
+		if (Physics.Raycast(transform.position,direction ,out hit))
 		{
-			distance = Vector3.Distance(transform.position, LeavesPrefab.transform.position);
-		} 
-		else if (type == 0)
-		{
-			distance = Vector3.Distance(transform.position, carcassPrefab.transform.position);
-		}
-		if (distance < 10f && hunger <= 2f)
-		{
-			target = food.transform.position;
-			if (transform.position == target)
+			if (hit.transform.gameObject.CompareTag("Food"))
 			{
-				Eating();	
+				float angle = Vector3.Angle(transform.forward, direction);
+				if (angle < FovFood / 2)
+				{
+					target = hit.transform.position;
+					Debug.Log(target);
+				}
+				else
+				{
+					Debug.Log("IT IS OUT OF RANGE");
+				}
 			}
-		} 
-		*/
-	}
-#endregion
-
-//restores hunger
-	void Eating() 
-	{
-		for (int i = 0; i <= 10; i++)
-        {
-            hunger++;
-        }
-		DestroyFoodSource();
-		TarUpdate();
+		
+		}
 	}
 
-//sets new target after position has been reached or if hunger has been restored
+	//sets new target after position has been reached or if hunger has been restored
 	void TarUpdate() 
 	{
 		target = new Vector3(Random.Range(border, -border), 0.8f, Random.Range(border, -border));
+		this.transform.LookAt(target);
+		if (hunger < 50f)
+		{
+			FoodFinding();
+		}
 	}
 
-//spawns meat carcass at position when creature dies
+	//spawns meat carcass at position when creature dies
 	void SpawnCarcass()
 	{
 		Instantiate(carcassPrefab, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}
 
-//Destroys foodsource after its been eaten
-	void DestroyFoodSource()
+	void ObstacleAviod()
 	{
-		Destroy(TempFoodSource);
-	}
 
-//Detects collision for when its hungry 
-	void OnCollisionEnter (Collision col)
-    {
-     	if (type == 0 && hunger <= 2f)
-		{
-			if (col.gameObject.tag == "Tree" || col.gameObject.tag == "Bush" || col.gameObject.tag == "Berry")
-      		{
-     		    target = col.transform.position;
-				TempFoodSource = col.gameObject.transform;
-			}
-   		}
-		else if (type == 1 && hunger <= 2f)
-		{
-			if (col.gameObject.tag == "Carcass")
-			{
-				target = col.transform.position;
-				TempFoodSource = col.gameObject.transform;
-			}
-		}
 	}
-
 	void OOPVar()
 	{
 		isMale = MyDNA.isMale;
 		type = MyDNA.type;
-		hunger = MyDNA.hunger;
+		hunger = 50;
 		speed = MyDNA.speed;
 		strength = MyDNA.strength;
 		health = MyDNA.health;

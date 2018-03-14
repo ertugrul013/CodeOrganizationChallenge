@@ -24,6 +24,7 @@ public class World_Maneger : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
+		AmountOfCreaturs = 1000;
 		World_Scale = this.gameObject.transform;
 		World_Scale.localScale = new Vector3 (WorldSize, WorldSize, WorldSize);	
 		borderpos = ReturnBorder();
