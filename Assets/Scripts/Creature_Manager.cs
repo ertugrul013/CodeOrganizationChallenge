@@ -24,7 +24,7 @@ public class Creature_Manager : MonoBehaviour {
 	private float border;
 
 	private float FovObstacle = 115f;
-	private float FovFood = 160f;
+	private float FovFood = 180f;
 
 	//oop var
 	private int isMale;
@@ -71,7 +71,6 @@ public class Creature_Manager : MonoBehaviour {
 	{		
 		RaycastHit hit;
 		Vector3 direction = target - transform.position;
-		Debug.DrawLine(transform.position,direction, Color.red);
 		if (Physics.Raycast(transform.position,direction ,out hit))
 		{
 			if (hit.transform.gameObject.CompareTag("Food"))
@@ -80,7 +79,6 @@ public class Creature_Manager : MonoBehaviour {
 				if (angle < FovFood / 2)
 				{
 					target = hit.transform.position;
-					Debug.Log(target);
 				}
 				else
 				{
