@@ -7,6 +7,7 @@ public class Creature_Manager : MonoBehaviour {
 	private DNA MyDNA;
 
 	public Material[] GenderMat;
+	public GameObject[] bodyTypes;
 	 
 	private int amountOfHealth;
 	private float strenght;
@@ -87,6 +88,7 @@ public class Creature_Manager : MonoBehaviour {
 		*/
 	}
 #endregion
+
 //restores hunger
 	void Eating() 
 	{

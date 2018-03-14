@@ -1,5 +1,0 @@
-eddie
-
-jesper
-    movemetn_enemy
-        
