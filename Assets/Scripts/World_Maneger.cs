@@ -24,7 +24,6 @@ public class World_Maneger : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		AmountOfCreaturs = 1000;
 		World_Scale = this.gameObject.transform;
 		World_Scale.localScale = new Vector3 (WorldSize, WorldSize, WorldSize);	
 		borderpos = ReturnBorder();
@@ -33,12 +32,6 @@ public class World_Maneger : MonoBehaviour {
 		InitSpawn();
 	}
 	
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
-
 	//he will spawn all the objects that are not a creature
 	//for example foor trees rocks
 	void ObjectSpawn()

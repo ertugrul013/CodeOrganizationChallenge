@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DNA 
 {
-	//variables to take care of
 	public int isMale;
 	public int type;
 
@@ -12,6 +11,7 @@ public class DNA
 	public float speed;
 	public float strength;
 	public float health;
+	public string tag;
 
 
 //random ranges still need to be adjusted for the different types
@@ -28,6 +28,7 @@ public class DNA
 				speed = Random.Range(5, 10);
 				strength = Random.Range(40, 60);
 				health = Random.Range(80, 100);
+				tag = "Type" + type.ToString();
 			break;
 			
 			case 1:
@@ -35,6 +36,7 @@ public class DNA
 				speed = Random.Range(8, 10);
 				strength = Random.Range(45, 60);
 				health = Random.Range(70, 100);
+				tag = "Type" + type.ToString();
 			break;
 
 			case 2:
@@ -42,6 +44,7 @@ public class DNA
 				speed = Random.Range(5, 8);
 				strength = Random.Range(20, 60);
 				health = Random.Range(90, 100);
+				tag = "Type" + type.ToString();
 			break;
 			
 			default:

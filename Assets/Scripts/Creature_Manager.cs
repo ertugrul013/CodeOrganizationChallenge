@@ -1,9 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class Creature_Manager : MonoBehaviour {
-	
+	// private enum State
+	// {
+	// 	hungery,
+	// 	alive,
+	// 	horny
+	// };
+
+	// private State state;
+
 	private DNA MyDNA;
 
 	public Material[] GenderMat;
@@ -13,13 +22,7 @@ public class Creature_Manager : MonoBehaviour {
 	private float strenght;
 	private float foodDecrease;
 
-	public Vector3 target;
-
-	public Transform TempFoodSource;
-
-	public Transform carcassPrefab;
-	
-	public float distance;
+	private Vector3 target;
 
 	private float border;
 
@@ -34,17 +37,24 @@ public class Creature_Manager : MonoBehaviour {
 	private float speed;
 	private float strength;
 	private float health;
-	
 
-		// Use this for initialization
+	public GameObject Parent;
+
+	// Use this for initialization
 	void Start () 
 	{
 		foodDecrease = 0.1f;
 		speed = 5f;
-		hunger = 10f;
 		border = GameObject.Find("World").GetComponent<World_Maneger>().ReturnBorder();
 		MyDNA = new DNA(type);
 		OOPVar();
+		Parent = GameObject.Find("Type " + type.ToString()).gameObject;
+		
+		// //threading
+		// ThreadStart st = new ThreadStart(ObstacleAviod);
+		// Thread t =  new Thread(st);
+		// t.Start();
+
 	}
 	
 	// Update is called once per frame
@@ -55,7 +65,7 @@ public class Creature_Manager : MonoBehaviour {
 		
 		if (hunger <= 0f)
 		{
-			SpawnCarcass();
+			Destroy(this.gameObject);
 		}
 
 		transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
@@ -71,6 +81,7 @@ public class Creature_Manager : MonoBehaviour {
 	{		
 		RaycastHit hit;
 		Vector3 direction = target - transform.position;
+		// Debug.DrawRay(transform.position,direction , Color.red);
 		if (Physics.Raycast(transform.position,direction ,out hit))
 		{
 			if (hit.transform.gameObject.CompareTag("Food"))
@@ -94,28 +105,18 @@ public class Creature_Manager : MonoBehaviour {
 	{
 		target = new Vector3(Random.Range(border, -border), 0.8f, Random.Range(border, -border));
 		this.transform.LookAt(target);
-		if (hunger < 50f)
-		{
-			FoodFinding();
-		}
-	}
-
-	//spawns meat carcass at position when creature dies
-	void SpawnCarcass()
-	{
-		Instantiate(carcassPrefab, transform.position, Quaternion.identity);
-		Destroy(gameObject);
+		
 	}
 
 	void ObstacleAviod()
 	{
-
+		
 	}
 	void OOPVar()
 	{
 		isMale = MyDNA.isMale;
 		type = MyDNA.type;
-		hunger = 50;
+		hunger = MyDNA.hunger;
 		speed = MyDNA.speed;
 		strength = MyDNA.strength;
 		health = MyDNA.health;
