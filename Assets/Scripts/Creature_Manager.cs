@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using UnityEngine.AI;
 
 public class Creature_Manager : MonoBehaviour {
 	// private enum State
@@ -23,6 +24,7 @@ public class Creature_Manager : MonoBehaviour {
 	private float foodDecrease;
 
 	private Vector3 target;
+	private NavMeshAgent agent;
 
 	private float border;
 
@@ -49,6 +51,8 @@ public class Creature_Manager : MonoBehaviour {
 		MyDNA = new DNA(type);
 		OOPVar();
 		Parent = GameObject.Find("Type " + type.ToString()).gameObject;
+		agent = GetComponent<NavMeshAgent>();
+		TarUpdate();
 		
 		// //threading
 		// ThreadStart st = new ThreadStart(ObstacleAviod);
@@ -67,14 +71,16 @@ public class Creature_Manager : MonoBehaviour {
 		{
 			Destroy(this.gameObject);
 		}
+		Debug.Log(agent.isStopped);
 
-		transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+		//transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
 		//sets new target when position is reached
-		if (transform.position == target) 
+		if (agent.isStopped) 
 		{
 			TarUpdate();
 		}
+		
 	}
 	//restores hunger
 	void FoodFinding() 
@@ -103,9 +109,15 @@ public class Creature_Manager : MonoBehaviour {
 	//sets new target after position has been reached or if hunger has been restored
 	void TarUpdate() 
 	{
-		target = new Vector3(Random.Range(border, -border), 0.8f, Random.Range(border, -border));
-		this.transform.LookAt(target);
-		
+		if(agent.isOnNavMesh)
+		{
+			target = new Vector3(Random.Range(border, -border), 0.8f, Random.Range(border, -border));
+			agent.SetDestination(target);		
+		}
+		else
+		{
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(0,0.5f,0), speed * Time.deltaTime);
+		}
 	}
 
 	void ObstacleAviod()

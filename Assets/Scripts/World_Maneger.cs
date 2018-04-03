@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class World_Maneger : MonoBehaviour {
 	[Header("World Settings")]
+	private NavMeshSurface surface;
 	private Transform World_Scale;
 	[Range(5,50)] public int WorldSize;
 
@@ -24,12 +26,18 @@ public class World_Maneger : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
+		surface = GetComponent<NavMeshSurface>();
 		World_Scale = this.gameObject.transform;
 		World_Scale.localScale = new Vector3 (WorldSize, WorldSize, WorldSize);	
 		borderpos = ReturnBorder();
 
 		ObjectSpawn();
 		InitSpawn();
+		/*the line below should be alwsays on the bottom of the start function
+		* the reason for this is. other ways the navmesh would be build without any of the trees of bushes
+		* taking into the navmeshs
+		*/
+		surface.BuildNavMesh();
 	}
 	
 	//he will spawn all the objects that are not a creature
@@ -58,7 +66,7 @@ public class World_Maneger : MonoBehaviour {
 	{
 		for (int x = 0; x < AmountOfCreaturs; x++)
 			{
-				Vector3 posx = new Vector3 (0, x,0.5f);
+				Vector3 posx = new Vector3 (x, 0,0.5f);
 				Instantiate(Creatur,posx , Quaternion.identity);
 			}	
 	}
