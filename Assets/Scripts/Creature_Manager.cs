@@ -71,12 +71,9 @@ public class Creature_Manager : MonoBehaviour {
 		{
 			Destroy(this.gameObject);
 		}
-		Debug.Log(agent.isStopped);
-
-		//transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
 		//sets new target when position is reached
-		if (agent.isStopped) 
+		if (agent.remainingDistance == 0f) 
 		{
 			TarUpdate();
 		}
@@ -87,7 +84,6 @@ public class Creature_Manager : MonoBehaviour {
 	{		
 		RaycastHit hit;
 		Vector3 direction = target - transform.position;
-		// Debug.DrawRay(transform.position,direction , Color.red);
 		if (Physics.Raycast(transform.position,direction ,out hit))
 		{
 			if (hit.transform.gameObject.CompareTag("Food"))
@@ -114,16 +110,8 @@ public class Creature_Manager : MonoBehaviour {
 			target = new Vector3(Random.Range(border, -border), 0.8f, Random.Range(border, -border));
 			agent.SetDestination(target);		
 		}
-		else
-		{
-			transform.position = Vector3.MoveTowards(transform.position, new Vector3(0,0.5f,0), speed * Time.deltaTime);
-		}
 	}
 
-	void ObstacleAviod()
-	{
-		
-	}
 	void OOPVar()
 	{
 		isMale = MyDNA.isMale;

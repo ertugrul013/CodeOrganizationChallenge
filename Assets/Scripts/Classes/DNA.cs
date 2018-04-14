@@ -25,7 +25,7 @@ public class DNA
 		{
 			case 0: //the vegan type
 				hunger = Random.Range(60, 100);
-				speed = Random.Range(5, 10);
+				speed = Random.Range(3, 10);
 				strength = Random.Range(40, 60);
 				health = Random.Range(80, 100);
 				tag = "Type" + type.ToString();
@@ -33,7 +33,7 @@ public class DNA
 			
 			case 1:
 				hunger = Random.Range(65, 100);
-				speed = Random.Range(8, 10);
+				speed = Random.Range(3, 130);
 				strength = Random.Range(45, 60);
 				health = Random.Range(70, 100);
 				tag = "Type" + type.ToString();
@@ -41,7 +41,7 @@ public class DNA
 
 			case 2:
 				hunger = Random.Range(70, 90);
-				speed = Random.Range(5, 8);
+				speed = Random.Range(3, 8);
 				strength = Random.Range(20, 60);
 				health = Random.Range(90, 100);
 				tag = "Type" + type.ToString();
