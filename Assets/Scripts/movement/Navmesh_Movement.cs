@@ -10,12 +10,11 @@ public class Navmesh_Movement : MonoBehaviour
     private NavMeshAgent agent;
 
     private Vector3 target;
-    private float border;
+    private float[] borders;
     private float Speed;
 
     void Awake()
     {
-
     }
 
 }
