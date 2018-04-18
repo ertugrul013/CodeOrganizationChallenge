@@ -7,17 +7,22 @@ using UnityEngine.AI;
 public class Navmesh_Movement : MonoBehaviour
 {
 
+    private Creature_Maneger creature_Maneger;
+
     private NavMeshAgent agent;
 
     private Vector3 target;
     private float[] borders;
-    private float Speed;
+
+
+    private bool isMale;
 
     void Awake()
     {
+        creature_Maneger = transform.parent.GetComponent<Creature_Maneger>();
+        isMale = creature_Maneger.isMale;
+    }
 
-    }  
 
-    
 
 }

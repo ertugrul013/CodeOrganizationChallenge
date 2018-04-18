@@ -14,10 +14,11 @@ public class Creature_Maneger : MonoBehaviour
 
     private Material[] GenderMat = new Material[2];
 
-    private bool isMale;
+    public bool isMale;
     private float foodDecrease;
     private float hunger;
     private float health;
+    public float speed;
 
     private bool isDead;
 
