@@ -15,6 +15,9 @@ public class Navmesh_Movement : MonoBehaviour
 
     void Awake()
     {
-    }
+
+    }  
+
+    
 
 }
