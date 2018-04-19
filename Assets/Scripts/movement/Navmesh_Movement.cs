@@ -12,15 +12,17 @@ public class Navmesh_Movement : MonoBehaviour
     private NavMeshAgent agent;
 
     private Vector3 target;
-    private float[] borders;
+    private float border;
 
-
+    private float speed;
     private bool isMale;
 
     void Awake()
     {
         creature_Maneger = transform.parent.GetComponent<Creature_Maneger>();
         isMale = creature_Maneger.isMale;
+        speed = creature_Maneger.speed;
+        border = creature_Maneger.border;
     }
 
 
